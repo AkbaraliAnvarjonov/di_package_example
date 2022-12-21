@@ -30,14 +30,22 @@ class _IncomesPageState extends State<IncomesPage> {
               );
             }
             if (viewModel.incomesList != null) {
-              return ListView.builder(
-                itemCount: viewModel.incomesList!.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(viewModel.incomesList![index].incomeType),
-                  );
-                },
+              return Column(
+                children: [
+                  ListView.builder(
+                    itemCount: viewModel.incomesList!.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(viewModel.incomesList![index].incomeType),
+                      );
+                    },
+                  ),
+                  TextFormField(
+                    decoration:
+                        const InputDecoration(border: OutlineInputBorder()),
+                  ),
+                ],
               );
             }
             return const Center(
