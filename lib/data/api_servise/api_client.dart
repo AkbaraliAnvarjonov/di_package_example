@@ -18,6 +18,8 @@ class ApiClient {
 
     dio.interceptors.add(InterceptorsWrapper(
         onError: (DioError error, ErrorInterceptorHandler handler) {
+          
+
       return handler.next(error);
     }, onRequest:
             (RequestOptions requestOptions, RequestInterceptorHandler handler) {
