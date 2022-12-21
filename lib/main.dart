@@ -1,6 +1,9 @@
 import 'package:dio_package/data/api_servise/api_servise.dart';
+import 'package:dio_package/data/repository/bank_repository.dart';
 import 'package:dio_package/data/repository/repository.dart';
 import 'package:dio_package/ui/home_page.dart';
+import 'package:dio_package/view_model/bank_view_model/expenses_view_mode.dart';
+import 'package:dio_package/view_model/bank_view_model/incomes_view_model.dart';
 import 'package:dio_package/view_model/category_id_model.dart';
 import 'package:dio_package/view_model/category_view_model.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +23,18 @@ void main() {
       ChangeNotifierProvider(
         create: (context) =>
             CategoryIdViewModel(repository: Repository(apiSerice: ApiSerice())),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => TransactionsViewModel(
+            bankRepository: BankRepository(
+          apiSerice: ApiSerice(),
+        )),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => IncomeTypesViewModel(
+            bankRepository: BankRepository(
+          apiSerice: ApiSerice(),
+        )),
       ),
     ],
     child: const MyApp(),
