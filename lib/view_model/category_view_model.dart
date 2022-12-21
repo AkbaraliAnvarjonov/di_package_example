@@ -5,12 +5,18 @@ import 'package:flutter/foundation.dart';
 
 class CategoryViewModel extends ChangeNotifier {
   Repository repository;
-  MyResponse myResponse;
+  List<Categories>? categoryList;
+  String errorForUI = "";
 
-  CategoryViewModel({required this.repository, required this.myResponse});
+  CategoryViewModel({required this.repository, re});
 
   fetchCategoryList() async {
-    myResponse.data = await repository.getCategories();
+    MyResponse response = await repository.getCategories();
+    if (response.error.isEmpty) {
+      categoryList = response.data;
+    } else {
+      errorForUI = response.error;
+    }
     notifyListeners();
   }
 }

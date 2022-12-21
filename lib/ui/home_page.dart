@@ -11,33 +11,37 @@ class UsagePage extends StatelessWidget {
       appBar: AppBar(title: const Text("Dio usage")),
       body: Consumer<CategoryViewModel>(
         builder: (context, viewModel, child) {
-          if (viewModel.myResponse.error.isEmpty) {
-            return Column(
-              children: [
-                const Center(
-                  child: Text("No Data Yet"),
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      context.read<CategoryViewModel>().fetchCategoryList();
-                    },
-                    child: const Text("Get Data")),
-              ],
+          if (viewModel.errorForUI.isNotEmpty) {
+            return Center(
+              child: Text(viewModel.errorForUI),
             );
           }
-          return Column(
-            children: [
-              ListView.builder(
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(viewModel.myResponse.data![index].name),
-                    onTap: () {},
-                  );
-                },
-              )
-            ],
-          );
+          return viewModel.categoryList != null
+              ? Column(
+                  children: [
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(viewModel.categoryList![index].name),
+                          onTap: () {},
+                        );
+                      },
+                    )
+                  ],
+                )
+              : Column(
+                  children: [
+                    const Center(
+                      child: Text("No Data Yet"),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          context.read<CategoryViewModel>().fetchCategoryList();
+                        },
+                        child: const Text("Get Data")),
+                  ],
+                );
         },
       ),
     );

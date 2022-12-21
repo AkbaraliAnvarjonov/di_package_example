@@ -5,12 +5,19 @@ import 'package:flutter/cupertino.dart';
 
 class CategoryIdViewModel extends ChangeNotifier {
   Repository repository;
-  MyResponse myResponse;
+  List<CategoryId>? categoryId;
+  String errorForUI = "";
 
-  CategoryIdViewModel({required this.repository, required this.myResponse});
+  CategoryIdViewModel({required this.repository});
 
   fetchCategoryIdList(int id) async {
-    myResponse.data = await repository.getCategoryId(id);
+    MyResponse response = await repository.getCategoryId(id);
+
+    if (response.error.isEmpty) {
+      categoryId = response.data;
+    } else {
+      errorForUI = response.error;
+    }
     notifyListeners();
   }
 }

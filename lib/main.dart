@@ -14,14 +14,12 @@ void main() {
       ChangeNotifierProvider(
         create: (context) => CategoryViewModel(
             repository: Repository(
-              apiSerice: ApiSerice(),
-            ),
-            myResponse: myResponse),
+          apiSerice: ApiSerice(),
+        )),
       ),
       ChangeNotifierProvider(
-        create: (context) => CategoryIdViewModel(
-            repository: Repository(apiSerice: ApiSerice()),
-            myResponse: myResponse),
+        create: (context) =>
+            CategoryIdViewModel(repository: Repository(apiSerice: ApiSerice())),
       ),
     ],
     child: const MyApp(),
