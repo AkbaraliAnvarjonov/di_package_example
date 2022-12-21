@@ -11,7 +11,7 @@ class UsagePage extends StatelessWidget {
       appBar: AppBar(title: const Text("Dio usage")),
       body: Consumer<CategoryViewModel>(
         builder: (context, viewModel, child) {
-          if (viewModel.categoryList == null) {
+          if (viewModel.myResponse.error.isEmpty) {
             return Column(
               children: [
                 const Center(
@@ -31,9 +31,8 @@ class UsagePage extends StatelessWidget {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(viewModel.categoryList![index].name),
-                    onTap: () {
-                    },
+                    title: Text(viewModel.myResponse.data![index].name),
+                    onTap: () {},
                   );
                 },
               )

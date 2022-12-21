@@ -6,7 +6,7 @@ class Repository {
   ApiSerice apiSerice;
   Repository({required this.apiSerice});
 
-  Future<List<Categories>?> getCategories() => apiSerice.getCategoryList();
-  Future<List<CategoryId>?> getCategoryId(int id) =>
+  Future<MyResponse> getCategories() => apiSerice.getCategoryList();
+  Future<MyResponse> getCategoryId(int id) =>
       apiSerice.getProductList(id);
 }

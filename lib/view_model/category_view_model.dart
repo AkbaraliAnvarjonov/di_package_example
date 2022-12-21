@@ -1,15 +1,16 @@
+import 'package:dio_package/data/api_servise/api_servise.dart';
 import 'package:dio_package/data/models/categories.dart';
 import 'package:dio_package/data/repository/repository.dart';
 import 'package:flutter/foundation.dart';
 
 class CategoryViewModel extends ChangeNotifier {
   Repository repository;
-  List<Categories>? categoryList;
+  MyResponse myResponse;
 
-  CategoryViewModel({required this.repository});
+  CategoryViewModel({required this.repository, required this.myResponse});
 
   fetchCategoryList() async {
-    categoryList = await repository.getCategories();
+    myResponse.data = await repository.getCategories();
     notifyListeners();
   }
 }

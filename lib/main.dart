@@ -7,15 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  MyResponse myResponse = MyResponse(error: "");
+
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
-        create: (context) =>
-            CategoryViewModel(repository: Repository(apiSerice: ApiSerice())),
+        create: (context) => CategoryViewModel(
+            repository: Repository(
+              apiSerice: ApiSerice(),
+            ),
+            myResponse: myResponse),
       ),
       ChangeNotifierProvider(
-        create: (context) =>
-            CategoryIdViewModel(repository: Repository(apiSerice: ApiSerice())),
+        create: (context) => CategoryIdViewModel(
+            repository: Repository(apiSerice: ApiSerice()),
+            myResponse: myResponse),
       ),
     ],
     child: const MyApp(),
