@@ -10,7 +10,7 @@ class IncomeTypesViewModel extends ChangeNotifier {
 
   IncomeTypesViewModel({required this.bankRepository});
 
-  fetchTransactionsList(int id) async {
+  fetchIncomesList() async {
     MyResponse response = await bankRepository.getExpenses();
     if (response.error.isEmpty) {
       incomesList = response.data;

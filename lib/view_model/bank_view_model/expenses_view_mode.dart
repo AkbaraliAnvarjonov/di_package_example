@@ -11,7 +11,7 @@ class TransactionsViewModel extends ChangeNotifier{
   TransactionsViewModel({required this.bankRepository});
 
 
-fetchTransactionsList(int id) async {
+fetchTransactionsList() async {
     MyResponse response = await bankRepository.getExpenses();
     if (response.error.isEmpty) {
       transactionList = response.data;

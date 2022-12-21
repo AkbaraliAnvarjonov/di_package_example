@@ -24,7 +24,7 @@ class DataModel {
       expenseId: jsonData['expense_id'] as int? ?? 0,
       amount: jsonData['amount'] as double? ?? 0.0,
       cardId: jsonData['card_id'] as int? ?? 0,
-      reciver: ReciveModel.fromJson(jsonData['reciver']),
+      reciver: ReciveModel.fromJson(jsonData['receiver']),
     );
   }
 }

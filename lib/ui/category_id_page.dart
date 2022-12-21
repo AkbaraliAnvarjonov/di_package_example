@@ -1,6 +1,7 @@
 import 'package:dio_package/data/models/products.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CategoryIdPage extends StatelessWidget {
   CategoryId categoryId;
   CategoryIdPage({super.key, required this.categoryId});
@@ -8,7 +9,7 @@ class CategoryIdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:const Text("Product")),
+      appBar: AppBar(title: const Text("Product")),
     );
   }
 }
