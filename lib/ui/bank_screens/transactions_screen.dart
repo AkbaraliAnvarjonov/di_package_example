@@ -20,7 +20,7 @@ class _TransactionPageState extends State<TransactionPage> {
   @override
   Widget build(BuildContext context) {
     return KeyboardDismisser(
-      gestures: [
+      gestures: const [
         GestureType.onTap,
         GestureType.onPanUpdateDownDirection,
       ],

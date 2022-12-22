@@ -9,7 +9,7 @@ class UsagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return KeyboardDismisser(
-        gestures: [
+        gestures: const [
           GestureType.onTap,
           GestureType.onPanUpdateDownDirection,
         ],
@@ -55,7 +55,6 @@ class UsagePage extends StatelessWidget {
                         );
                 },
               ),
-              
             ],
           ),
         ));
