@@ -29,11 +29,11 @@ class _CurrrecyPageState extends State<CurrrecyPage> {
           }
           if (viewModel.currencyList != null) {
             return ListView.builder(
-              itemCount: viewModel.currencyList!.length,
+              itemCount: viewModel.currencyList.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(viewModel.currencyList![index].caption),
+                  title: Text(viewModel.currencyList[index].caption),
                 );
               },
             );
